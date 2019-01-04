@@ -9,6 +9,12 @@
     .js-playground * {
       margin: 5px;
     }
+
+    .sign-container {
+      display: inline-block;
+      width: 9vmin;
+      height: 9vmin;
+    }
   </style>
 
   <script>
@@ -18,8 +24,11 @@
 
       for (let i = 1; i <= 9; i++)
       {
+        let container = document.createElement("div");
+        container.className = "sign-container";
+
         let sign = new window.PredictionSign({
-          el: playground.appendChild(document.createElement("span")),
+          el: playground.appendChild(container),
           options: {
             prediction: i
           }
