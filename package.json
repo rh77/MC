@@ -1,0 +1,37 @@
+{
+  "name": "mc",
+  "version": "0.1.0",
+  "description": "Magic Calendar",
+  "main": "index.js",
+  "scripts": {
+    "dev": "static ./",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rh77/MC.git"
+  },
+  "author": "Katy_f77",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rh77/MC/issues"
+  },
+  "homepage": "https://github.com/rh77/MC#readme",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^1.0.0",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.0.3",
+    "scss": "^0.2.4",
+    "static-server": "^2.2.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.1",
+    "webpack-cli": "^3.0.8"
+  },
+  "devDependencies": {
+    "pug": "^2.0.3",
+    "pug-loader": "^2.4.0"
+  }
+}
