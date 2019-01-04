@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PredictionSign</title>
+
+  <script src="../../dist/bundle.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      for (let i = 1; i <= 9; i++)
+      {
+        let sign = new window.PredictionSign({
+          el: document.querySelector(`.js-playground_type${i}`),
+          options: {
+            prediction: i
+          }
+        });
+
+        sign.render();
+      }
+    });
+  </script>
+
+</head>
+<body>
+
+  <span class="js-playground_type1"></span>
+  <span class="js-playground_type2"></span>
+  <span class="js-playground_type3"></span>
+  <span class="js-playground_type4"></span>
+  <span class="js-playground_type5"></span>
+  <span class="js-playground_type6"></span>
+  <span class="js-playground_type7"></span>
+  <span class="js-playground_type8"></span>
+  <span class="js-playground_type9"></span>
+
+</body>
+</html>

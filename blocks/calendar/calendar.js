@@ -4,7 +4,7 @@ import _ from './calendar.scss';
 export class Calendar extends Component {
 
   constructor(data) {
-    super(data)
+    super(data);
   }
 
   render() {

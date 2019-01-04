@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CalendarDateCell</title>
+
+    <script src="../../../dist/bundle.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+          let date = new window.CalendarDateCell({
+            el: document.querySelector('.js-playground'),
+            options: {
+                type: "day",
+                value: new Date()
+            }
+          });
+
+          date.render();
+        });
+    </script>
+
+</head>
+<body>
+
+    <div class="js-playground"></div>
+
+</body>
+</html>
