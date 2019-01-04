@@ -10,7 +10,7 @@ export class PredictionSign extends Component {
 
   render() {
 
-    this.el.innerHTML = template(this._options);
+    this._el.innerHTML = template(this._options);
 
   }
 

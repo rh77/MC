@@ -9,7 +9,7 @@ export class Calendar extends Component {
 
   render() {
 
-    this.el.innerHTML = `
+    this._el.innerHTML = `
       <button class="button button_inactive">1234 ${this.options.text}</button>
     `;
 

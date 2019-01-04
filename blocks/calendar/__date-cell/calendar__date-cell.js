@@ -9,7 +9,7 @@ export class CalendarDateCell extends Component {
 
   render() {
 
-    this.el.innerHTML = "test";
+    this._el.innerHTML = "test";
 
   }
 
