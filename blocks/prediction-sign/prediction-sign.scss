@@ -1,37 +1,54 @@
 .prediction-sign {
+    &_size {
+        &_normal {
+            width: 9vmin;
+            height: 9vmin;
+        }
+    }
+
     &_type_1 {
         background-color: black;
+        color: white;
     }
 
     &_type_2 {
         background-color: gray;
+        color: white;
     }
 
     &_type_3 {
         background-color: lightgray;
+        color: black;
     }
 
     &_type_4 {
         background-color: white;
+        color: black;
     }
 
     &_type_5 {
         background-color: red;
+        color: white;
     }
 
     &_type_6 {
         background-color: orange;
+        color: black;
     }
 
     &_type_7 {
-        background-color: yellow;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8' standalone='no'?%3E%3C!-- Created with Inkscape (http://www.inkscape.org/) --%3E%3Csvg xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns:cc='http://creativecommons.org/ns%23' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns%23' xmlns:svg='http://www.w3.org/2000/svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:sodipodi='http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd' xmlns:inkscape='http://www.inkscape.org/namespaces/inkscape' version='1.1' id='svg3713' width='24' height='24' viewBox='0 0 24 24' sodipodi:docname='g24.svg' inkscape:version='0.92.3 (2405546, 2018-03-11)'%3E%3Cmetadata id='metadata3719'%3E%3Crdf:RDF%3E%3Ccc:Work rdf:about=''%3E%3Cdc:format%3Eimage/svg+xml%3C/dc:format%3E%3Cdc:type rdf:resource='http://purl.org/dc/dcmitype/StillImage' /%3E%3Cdc:title%3E%3C/dc:title%3E%3C/cc:Work%3E%3C/rdf:RDF%3E%3C/metadata%3E%3Cdefs id='defs3717' /%3E%3Csodipodi:namedview pagecolor='%23ffffff' bordercolor='%23666666' borderopacity='1' objecttolerance='10' gridtolerance='10' guidetolerance='10' inkscape:pageopacity='0' inkscape:pageshadow='2' inkscape:window-width='1920' inkscape:window-height='1017' id='namedview3715' showgrid='false' inkscape:zoom='35.333333' inkscape:cx='10.216981' inkscape:cy='12' inkscape:window-x='-8' inkscape:window-y='-8' inkscape:window-maximized='1' inkscape:current-layer='layer2' /%3E%3Cg inkscape:groupmode='layer' id='layer3' inkscape:label='Layer 3' style='display:inline'%3E%3Ccircle style='fill:%23000000' id='path3794' cx='12' cy='12' r='12' /%3E%3C/g%3E%3Cg inkscape:groupmode='layer' id='layer1' inkscape:label='Layer 1' style='display:inline'%3E%3Cellipse style='fill:%23ffff00' id='path3791' cx='12.028302' cy='12' rx='10.273585' ry='10.301887' /%3E%3C/g%3E%3Cg inkscape:groupmode='layer' id='layer2' inkscape:label='Layer 2' style='display:inline'%3E%3Ccircle style='fill:%23000000;stroke-width:0.8502214' id='path3742' cx='8.4490566' cy='9.4377356' r='1.6' /%3E%3Cellipse style='fill:%23000000' id='path3780' cx='12.141509' cy='17.023584' rx='4.4716983' ry='4.3726416' /%3E%3Ccircle style='display:inline;fill:%23000000;stroke-width:0.8502214' id='path3742-0' cx='15.566038' cy='9.3679237' r='1.6' /%3E%3C/g%3E%3C/svg%3E");
     }
 
     &_type_8 {
         background-color: rgb(9, 179, 99);
+        color: white;
     }
 
     &_type_9 {
         background-color: cyan;
+        color: black;
     }
 }
