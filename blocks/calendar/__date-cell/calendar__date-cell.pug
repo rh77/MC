@@ -1,0 +1,13 @@
+div.calendar__date-cell 
+    if day
+        p 
+            | #{day} 
+            br 
+            | #{shortMonth}
+    else if year
+        p 
+            | #{year} 
+            br 
+            | #{yearShortSignName}
+    else
+        p ""
