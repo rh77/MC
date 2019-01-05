@@ -1,7 +1,7 @@
 ul
     each predictionsColumn in predictionColumns
         li
-            div #{predictionsColumn.headerOptions.type}
             ul
+                li.js-calendar__date-cell
                 each prediction in predictionsColumn.contentOptions
-                    li #{prediction.prediction}
+                    li.js-prediction-sign
