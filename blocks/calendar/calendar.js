@@ -1,4 +1,5 @@
 import { Component } from '../component';
+import template from './calendar.pug';
 import _ from './calendar.scss';
 
 export class Calendar extends Component {
@@ -9,9 +10,7 @@ export class Calendar extends Component {
 
   render() {
 
-    this._el.innerHTML = `
-      <button class="button button_inactive">1234 ${this._options.text}</button>
-    `;
+    this._el.innerHTML = template(this._options);
 
   }
 

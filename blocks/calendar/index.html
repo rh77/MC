@@ -3,15 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Calendar</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
 
     <script src="../../dist/bundle.js"></script>
 
     <script>
         window.addEventListener('DOMContentLoaded', function () {
+
+          let predictionColumns = [];
+          for (let i = 0; i < 13; i++)
+          {
+            let predictions = [];
+            for (let j = 0; j < 12; j++)
+            {
+              predictions.push({ prediction: j % 9 + 1 });
+            }
+
+            let predictionColumn = {
+              headerOptions: {
+                    type: "day",
+                    value: new Date()
+              },
+              contentOptions: predictions
+            };
+
+            predictionColumns.push(predictionColumn);
+          }
+
           let calendar = new window.Calendar({
             el: document.querySelector('.js-playground'),
             options: {
-              text: 'Hello world'
+              predictionColumns : predictionColumns
             }
           });
 

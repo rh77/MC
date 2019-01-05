@@ -1,0 +1,7 @@
+ul
+    each predictionsColumn in predictionColumns
+        li
+            div #{predictionsColumn.headerOptions.type}
+            ul
+                each prediction in predictionsColumn.contentOptions
+                    li #{prediction.prediction}
