@@ -8,20 +8,24 @@ export class CalendarDateCell extends Component {
     super(data);
   }
 
-  render() {
+  render(data) {
 
     let dateOptions = {};
-    let { value, type } = this._options;
+    let { value, type } = data;
 
     switch (type.toLowerCase()) {
         case "day":
-            dateOptions.day = value.getDate();
-            dateOptions.shortMonth = CalendarDateCell._getMonthShortName(value.getMonth() + 1);
+            dateOptions = {
+                day: value.getDate(),
+                shortMonth: CalendarDateCell._getMonthShortName(value.getMonth() + 1)
+            };
             break;
         case "year":
         default:
-            dateOptions.year = value.getFullYear();
-            dateOptions.yearShortSignName = CalendarDateCell._getYearShortSignName(dateOptions.year);
+            dateOptions = {
+                year: value.getFullYear(),
+                yearShortSignName: CalendarDateCell._getYearShortSignName(dateOptions.year)
+            };
             break;
     }
 

@@ -8,9 +8,9 @@ export class PredictionSign extends Component {
     super(data);
   }
 
-  render() {
+  render(data) {
 
-    this._el.innerHTML = template(this._options);
+    this._el.innerHTML = template(data);
 
   }
 

@@ -1,7 +1,10 @@
+- var x = 0
 ul
-    each predictionsColumn in predictionColumns
+    while x++ < width
         li
             ul
-                li.js-calendar__date-cell
-                each prediction in predictionsColumn.contentOptions
-                    li.js-prediction-sign
+                li(class=`js-date-cell-${x}`)
+                - var y = 0
+                while y++ < height
+                    li(class=`js-prediction-cell-${x}-${y}`)
+

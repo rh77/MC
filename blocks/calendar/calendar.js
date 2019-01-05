@@ -8,9 +8,14 @@ export class Calendar extends Component {
     super(data);
   }
 
-  render() {
+  render(data) {
 
-    this._el.innerHTML = template(this._options);
+    let options = {
+      width: this._options.width || 14,
+      height: this._options.height|| 12
+    };
+
+    this._el.innerHTML = template(options);
 
   }
 

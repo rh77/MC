@@ -24,11 +24,10 @@
             for (let i = 0; i < 2; i++)
             {
                 let date = new window.CalendarDateCell({
-                    el: document.querySelector(`.js-playground:nth-of-type(${i + 1})`),
-                    options: options[i]
+                    el: document.querySelector(`.js-playground:nth-of-type(${i + 1})`) 
                 });
 
-                date.render();
+                date.render(options[i]);
             }
         });
     </script>

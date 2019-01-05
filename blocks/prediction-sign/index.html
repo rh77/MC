@@ -29,13 +29,12 @@
         container.className = "sign-container";
 
         let sign = new window.PredictionSign({
-          el: playground.appendChild(container),
-          options: {
-            prediction: i
-          }
+          el: playground.appendChild(container)
         });
 
-        sign.render();
+        sign.render({
+            prediction: i
+          });
       }
     });
   </script>
