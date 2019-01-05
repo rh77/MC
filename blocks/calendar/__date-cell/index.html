@@ -8,21 +8,34 @@
 
     <script>
         window.addEventListener('DOMContentLoaded', function () {
-          let date = new window.CalendarDateCell({
-            el: document.querySelector('.js-playground'),
-            options: {
-                type: "day",
-                value: new Date()
-            }
-          });
 
-          date.render();
+            let options = [
+                {
+                    type: "day",
+                    value: new Date()
+                },
+                {
+                    type: "year",
+                    value: new Date()
+                }
+            ];
+
+            for (let i = 0; i < 2; i++)
+            {
+                let date = new window.CalendarDateCell({
+                    el: document.querySelector(`.js-playground:nth-of-type(${i + 1})`),
+                    options: options[i]
+                });
+
+                date.render();
+            }
         });
     </script>
 
 </head>
 <body>
 
+    <div class="js-playground"></div>
     <div class="js-playground"></div>
 
 </body>
