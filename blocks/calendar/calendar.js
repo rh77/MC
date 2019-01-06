@@ -1,6 +1,6 @@
 import { Component } from '../component';
 import { CalendarDateCell } from './__date-cell/calendar__date-cell';
-import { PredictionSign } from '../prediction-sign/prediction-sign';
+import { PredictionSign } from '../common/prediction-sign/prediction-sign';
 import template from './calendar.pug';
 import _ from './calendar.scss';
 
