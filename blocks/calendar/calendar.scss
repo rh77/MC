@@ -1,8 +1,23 @@
 $sign-size: 32px;
 $sign-padding: 3px;
+$date-height: 40px;
 
 .calendar {
   display: block;
+
+  &,
+  & * {
+    margin: 0px;
+    padding: 0px; 
+    margin-block-start: 0px;
+    margin-inline-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    padding-block-start: 0px;
+    padding-block-end: 0px;
+    padding-inline-end: 0px;
+  }
 
   &__column {
     display: inline-block;
@@ -17,6 +32,8 @@ $sign-padding: 3px;
 
   &__date-container {
     display: block;
+    height: $date-height;
     width: $sign-size;
+    padding: $sign-padding;
   }
 }

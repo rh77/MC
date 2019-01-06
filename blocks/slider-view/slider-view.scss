@@ -1,11 +1,12 @@
 $sign-size: 32px;
-$sign-padding: 3px;
+$cell-padding: 3px;
+$header-offset: 40px + 2 * $cell-padding;
 $sign-names-width: 50px;
 $right-panel-width: 50px;
-$columns-count: 12;
-$content-width: $sign-size * $columns-count + $sign-padding * 2 * ($columns-count - 1);
+$columns-count: 13;
+$content-width: $sign-size * $columns-count + $cell-padding * 2 * $columns-count;
 $lines-count: 12;
-$content-height: $sign-size * $lines-count + $sign-padding * 2 * ($lines-count - 1);
+$content-height: $sign-size * $lines-count + $cell-padding * 2 * $lines-count;
 $background-color: white;
 
 .slider-view {
@@ -16,7 +17,7 @@ $background-color: white;
   &__left-panel {
     float: left;
     width: $sign-names-width;
-    height: $content-height;
+    height: $content-height + $header-offset;
   }
 
   &__center-frame {
@@ -28,42 +29,45 @@ $background-color: white;
 
   &__sliding-content {
     width: 9999px;
-    height: $content-height;
+    height: $content-height + $header-offset;
   }
 
   &__right-panel {
     float: left;
     width: $right-panel-width;
-    height: $content-height;
+    height: $content-height + $header-offset;
   }
 
   &__content-overlap {
     position: absolute;
-    opacity: 0.5;
+    opacity: 0.7;
     background-color: $background-color;
-    width: ($content-width - $sign-size) / 2 - $sign-padding;
-    height: ($content-height - $sign-size) / 2 - $sign-padding;
+    width: ($content-width - $sign-size) / 2 - $cell-padding;
 
     &_location {
 
       &_top-left {
-        top: 0;
-        left: 0;
+        top: 0px;
+        left: 0px;
+        height: ($sign-size + $cell-padding * 2) * 4 + $header-offset;
       }
 
       &_top-right {
-        top: 0;
-        right: 0;
+        top: 0px;
+        right: 0px;
+        height: ($sign-size + $cell-padding * 2) * 4 + $header-offset;
       }
 
       &_bottom-left {
-        bottom: 0;
-        left: 0;
+        bottom: 0px;
+        left: 0px;
+        height: ($sign-size + $cell-padding * 2) * 7;
       }
 
       &_bottom-right {
-        bottom: 0;
-        right: 0;
+        bottom: 0px;
+        right: 0px;
+        height: ($sign-size + $cell-padding * 2) * 7;
       }
     }
   }

@@ -9,17 +9,17 @@
 
     <style>
       .js-sign-names {
-        background-color: red;
+        background-color: pink;
         height: 100%;
-      }
-
-      .js-calendar {
-        background-color: green;
       }
 
       .js-description {
-        background-color: blue;
+        background-color: pink;
         height: 100%;
+      }
+
+      .js-move-right {
+        position: fixed;
       }
     </style>
 
@@ -31,11 +31,16 @@
           });
 
           sliderView.render();
+
+          document.querySelector('.js-move-right').onclick = () => {
+            sliderView.calendar.moveRight();
+          }
         });
     </script>
 
 </head>
 <body>
     <div class="js-playground"></div>
+    <button class="js-move-right">Rotate</button>
 </body>
 </html>
