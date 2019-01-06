@@ -1,8 +1,8 @@
 import { Component } from '../component';
-import template from './slider-frame.pug';
-import _ from './slider-frame.scss';
+import template from './slider-view.pug';
+import _ from './slider-view.scss';
 
-export class SliderFrame extends Component {
+export class SliderView extends Component {
 
   constructor(data) {
     super(data);

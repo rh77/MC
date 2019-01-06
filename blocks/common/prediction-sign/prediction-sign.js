@@ -1,4 +1,4 @@
-import { Component } from '../component';
+import { Component } from '../../component';
 import template from './prediction-sign.pug';
 import _ from './prediction-sign.scss';
 

@@ -8,7 +8,7 @@ $lines-count: 12;
 $content-height: $sign-size * $lines-count + $sign-padding * 2 * ($lines-count - 1);
 $background-color: white;
 
-.slider-frame {
+.slider-view {
   display: block;
   position: fixed;
   background-color: $background-color;
