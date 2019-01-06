@@ -1,5 +1,17 @@
 .calendar {
-  padding: 20px;
+  display: block;
+
+  &__column-container {
+    display: inline-block;
+  }
+
+  &__column {
+    display: block;
+  }
+
+  &__cell {
+    display: block;
+  }
 
   &_inactive {
     color: darkgrey;

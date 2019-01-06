@@ -1,4 +1,5 @@
 import { Component } from '../component';
+import { CalendarDateCell } from './__date-cell/calendar__date-cell';
 import template from './calendar.pug';
 import _ from './calendar.scss';
 
@@ -8,7 +9,7 @@ export class Calendar extends Component {
     super(data);
   }
 
-  render(data) {
+  render() {
 
     let options = {
       width: this._options.width || 14,
@@ -17,6 +18,14 @@ export class Calendar extends Component {
 
     this._el.innerHTML = template(options);
 
+    this.dateCell = new CalendarDateCell({
+      el: document.querySelector('.js-date-cell-1')
+    });
+
+    this.dateCell.render({
+      type: "day",
+      value: new Date()
+    });
   }
 
 }
