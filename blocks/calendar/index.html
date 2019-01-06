@@ -10,42 +10,52 @@
     <script>
         window.addEventListener('DOMContentLoaded', function () {
 
-          let predictionColumns = [];
-          for (let i = 0; i < 13; i++)
+          let dateNow = new Date();
+          let prediction = {
+            columns: [],
+            type: "day",
+            dates: []
+          };
+
+          const totalSigns = 12;
+          const totalColumns = 14;
+          const totalPredictions = 9;
+
+          for (let i = 0; i < totalColumns; i++)
           {
             let predictions = [];
-            for (let j = 0; j < 12; j++)
+            for (let j = 0; j < totalSigns; j++)
             {
-              predictions.push({ prediction: j % 9 + 1 });
+              predictions.push((j + i) % totalPredictions + 1);
             }
 
-            let predictionColumn = {
-              headerOptions: {
-                    type: "day",
-                    value: new Date()
-              },
-              contentOptions: predictions
-            };
+            prediction.columns.push(predictions);
 
-            predictionColumns.push(predictionColumn);
+            let date = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate() + i);
+            prediction.dates.push(date);
           }
 
-          let calendar = new window.Calendar({
+          let calendar = new Calendar({
             el: document.querySelector('.js-playground'),
             options: {
-              width: 14,
-              height: 12,
-              content: predictionColumns
+              width: prediction.columns.length,
+              height: totalSigns,
+              content: prediction
             } 
           });
 
           calendar.render();
+
+          document.querySelector('.js-move-right').onclick = () => {
+            calendar.moveRight();
+          }
         });
     </script>
 
 </head>
 <body>
 
+    <button class="js-move-right">Rotate</button>
     <div class="js-playground"></div>
 
 </body>

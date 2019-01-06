@@ -1,9 +1,8 @@
 - var x = 0
 ul.calendar
     while x++ < width
-        li.calendar__column-container
-            ul.calendar__column
-                li(class=`calendar__cell js-date-cell-${x}`)
-                - var y = 0
-                while y++ < height
-                    li(class=`calendar__cell js-prediction-cell-${x}-${y}`)
+        li(class="calendar__column js-column")
+            div(class='js-date-cell calendar__date-container')
+            - var y = 0
+            while y++ < height
+                div(class='js-prediction-cell calendar__sign-container')

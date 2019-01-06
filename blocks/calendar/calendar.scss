@@ -1,20 +1,19 @@
 .calendar {
   display: block;
 
-  &__column-container {
+  &__column {
     display: inline-block;
   }
 
-  &__column {
+  &__sign-container {
     display: block;
+    width: 32px;
+    height: 32px;
+    padding: 3px;
   }
 
-  &__cell {
+  &__date-container {
     display: block;
+    width: 32px;
   }
-
-  &_inactive {
-    color: darkgrey;
-  }
-
 }
