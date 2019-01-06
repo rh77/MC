@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SliderFrame</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
+
+    <script src="../../dist/bundle.js"></script>
+
+    <style>
+      .js-sign-names {
+        background-color: red;
+        height: 100%;
+      }
+
+      .js-calendar {
+        background-color: green;
+      }
+
+      .js-description {
+        background-color: blue;
+        height: 100%;
+      }
+    </style>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+
+          let sliderFrame = new SliderFrame({
+            el: document.querySelector('.js-playground')
+          });
+
+          sliderFrame.render();
+        });
+    </script>
+
+</head>
+<body>
+    <div class="js-playground"></div>
+</body>
+</html>

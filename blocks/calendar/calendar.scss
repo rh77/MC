@@ -1,3 +1,6 @@
+$sign-size: 32px;
+$sign-padding: 3px;
+
 .calendar {
   display: block;
 
@@ -7,13 +10,13 @@
 
   &__sign-container {
     display: block;
-    width: 32px;
-    height: 32px;
-    padding: 3px;
+    width: $sign-size;
+    height: $sign-size;
+    padding: $sign-padding;
   }
 
   &__date-container {
     display: block;
-    width: 32px;
+    width: $sign-size;
   }
 }

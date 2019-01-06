@@ -1,0 +1,70 @@
+$sign-size: 32px;
+$sign-padding: 3px;
+$sign-names-width: 50px;
+$right-panel-width: 50px;
+$columns-count: 12;
+$content-width: $sign-size * $columns-count + $sign-padding * 2 * ($columns-count - 1);
+$lines-count: 12;
+$content-height: $sign-size * $lines-count + $sign-padding * 2 * ($lines-count - 1);
+$background-color: white;
+
+.slider-frame {
+  display: block;
+  position: fixed;
+  background-color: $background-color;
+
+  &__left-panel {
+    float: left;
+    width: $sign-names-width;
+    height: $content-height;
+  }
+
+  &__center-frame {
+    position: relative;
+    float: left;
+    width: $content-width;
+    overflow: hidden;
+  }
+
+  &__sliding-content {
+    width: 9999px;
+    height: $content-height;
+  }
+
+  &__right-panel {
+    float: left;
+    width: $right-panel-width;
+    height: $content-height;
+  }
+
+  &__content-overlap {
+    position: absolute;
+    opacity: 0.5;
+    background-color: $background-color;
+    width: ($content-width - $sign-size) / 2 - $sign-padding;
+    height: ($content-height - $sign-size) / 2 - $sign-padding;
+
+    &_location {
+
+      &_top-left {
+        top: 0;
+        left: 0;
+      }
+
+      &_top-right {
+        top: 0;
+        right: 0;
+      }
+
+      &_bottom-left {
+        bottom: 0;
+        left: 0;
+      }
+
+      &_bottom-right {
+        bottom: 0;
+        right: 0;
+      }
+    }
+  }
+}
