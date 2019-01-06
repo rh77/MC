@@ -19,24 +19,25 @@ export class Calendar extends Component {
 
     this._el.innerHTML = template(options);
 
-    let prediction = this._options.content;
-
+    let content = this._options.content;
     let columns = this._el.querySelectorAll('.js-column');
+    this._columnObjects = [];
+
     for (let i = 0; i < columns.length; i++)
     {
       let column = columns[i];
       let dateCell = new CalendarDateCell({
-        el: column.querySelector('.js-date-cell')
+        el: column.querySelector('.js-date-cell'),
+        options: { 
+          type: content.type 
+        }
       });
 
-      dateCell.render({
-        type: prediction.type,
-        value: prediction.dates[i]
-      });
+      dateCell.render(content.dates[i]);
 
-      let columnData = prediction.columns[i];
+      let columnData = content.columns[i];
       let predictionElements = column.querySelectorAll('.js-prediction-cell');
-
+      let predictionObjects = [];
       for (let j = 0; j < predictionElements.length; j++)
       {
         let predictionCell = new PredictionSign({
@@ -46,13 +47,28 @@ export class Calendar extends Component {
         predictionCell.render({
           prediction: columnData[j]
         });
+
+        predictionObjects.push(predictionCell);
       }
+
+      this._columnObjects.push({
+        date: dateCell,
+        predictions: predictionObjects
+      });
     }
   }
 
-  moveRight() {
-
+  moveRight(date, predictions) {
     let firstColumn = this._el.querySelector('.js-column');
+    let firstColumnObject = this._columnObjects.shift();
+    firstColumnObject.date.render(date);
+    firstColumnObject.predictions.forEach((prediction, i) => prediction.render({ prediction: predictions[i] }));
     firstColumn.parentNode.appendChild(firstColumn);
+    this._columnObjects.push(firstColumnObject);
+  }
+
+  getMoveWidth() {
+    let firstColumn = this._el.querySelector('.js-column');
+    return getComputedStyle(firstColumn).width;
   }
 }

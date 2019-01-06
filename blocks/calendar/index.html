@@ -23,15 +23,8 @@
 
           for (let i = 0; i < totalColumns; i++)
           {
-            let predictions = [];
-            for (let j = 0; j < totalSigns; j++)
-            {
-              predictions.push((j + i) % totalPredictions + 1);
-            }
-
-            prediction.columns.push(predictions);
-
             let date = new Date(dateNow.getFullYear(), dateNow.getMonth(), dateNow.getDate() + i);
+            prediction.columns.push(_getRandomPredictions(date));
             prediction.dates.push(date);
           }
 
@@ -47,7 +40,18 @@
           calendar.render();
 
           document.querySelector('.js-move-right').onclick = () => {
-            calendar.moveRight();
+            let date = new Date();
+            calendar.moveRight(date, _getRandomPredictions(date));
+          }
+
+          function _getRandomPredictions(date) {
+
+            let predictions = [];
+            for (let i = 0; i < totalSigns; i++)
+            {
+              predictions.push((date.getDate() + i) % totalPredictions + 1);
+            }
+            return predictions;
           }
         });
     </script>
