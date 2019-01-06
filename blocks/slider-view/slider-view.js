@@ -2,6 +2,7 @@ import { Component } from '../component';
 import template from './slider-view.pug';
 import _ from './slider-view.scss';
 import { Calendar } from '../calendar/calendar';
+import { YearSignList } from '../year-sign-list/year-sign-list';
 
 export class SliderView extends Component {
 
@@ -27,7 +28,12 @@ export class SliderView extends Component {
       } 
     });
 
+    let yearSignList = new YearSignList({
+      el: this._el.querySelector(".js-sign-names")
+    });
+
     this.calendar.render();
+    yearSignList.render();
   }
 
   _getPrediction() {

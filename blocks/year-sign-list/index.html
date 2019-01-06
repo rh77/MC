@@ -2,40 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>SliderView</title>
+    <title>YearSignList</title>
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.ico">
 
     <script src="../../dist/bundle.js"></script>
 
-    <style>
-
-      .js-description {
-        height: 100%;
-      }
-
-      .js-move-right {
-        position: fixed;
-      }
-    </style>
-
     <script>
         window.addEventListener('DOMContentLoaded', function () {
 
-          let sliderView = new SliderView({
+          let list = new YearSignList({
             el: document.querySelector('.js-playground')
           });
 
-          sliderView.render();
-
-          document.querySelector('.js-move-right').onclick = () => {
-            sliderView.calendar.moveRight();
-          }
+          list.render();
         });
     </script>
 
 </head>
 <body>
     <div class="js-playground"></div>
-    <button class="js-move-right">Rotate</button>
 </body>
 </html>

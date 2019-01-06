@@ -1,0 +1,30 @@
+$sign-size: 32px;
+$cell-padding: 3px;
+
+.year-sign-list {
+  display: block;
+
+  &,
+  & * {
+    margin: 0px;
+    padding: 0px; 
+    margin-block-start: 0px;
+    margin-inline-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+    padding-block-start: 0px;
+    padding-block-end: 0px;
+    padding-inline-end: 0px;
+  }
+
+  &__sign-name {
+    text-align: right;
+    vertical-align: middle;
+    font-weight: bold;
+    height: $sign-size - $cell-padding - 2px;
+    padding: $cell-padding;
+    padding-top: $cell-padding * 2 + 2px;
+    padding-right: $cell-padding * 5;
+  }
+}

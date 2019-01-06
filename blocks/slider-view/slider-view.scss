@@ -1,7 +1,7 @@
 $sign-size: 32px;
 $cell-padding: 3px;
 $header-offset: 40px + 2 * $cell-padding;
-$sign-names-width: 50px;
+$sign-names-width: 100px;
 $right-panel-width: 50px;
 $columns-count: 13;
 $content-width: $sign-size * $columns-count + $cell-padding * 2 * $columns-count;
@@ -15,6 +15,7 @@ $background-color: white;
   background-color: $background-color;
 
   &__left-panel {
+    padding-top: $header-offset;
     float: left;
     width: $sign-names-width;
     height: $content-height + $header-offset;
