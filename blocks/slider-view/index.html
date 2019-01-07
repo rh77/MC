@@ -15,6 +15,10 @@
 
       .js-move-right {
         position: fixed;
+        top: 12px;
+        left: 43px;
+        width: 55px;
+        height: 34px;
       }
     </style>
 
@@ -30,12 +34,16 @@
           document.querySelector('.js-move-right').onclick = () => {
             sliderView.moveRight();
           }
+
+          document.addEventListener("touchmove", () => {
+            sliderView.moveRight();
+          });
         });
     </script>
 
 </head>
 <body>
     <div class="js-playground"></div>
-    <button class="js-move-right">Rotate</button>
+    <button class="js-move-right">Move</button>
 </body>
 </html>
