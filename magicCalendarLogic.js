@@ -3,6 +3,12 @@ export class MagicCalendarLogic {
     static get TOTAL_SIGNS() { return 12 };
     static get TOTAL_PREDICTIONS() { return 9 };
 
+    static get signInteractionMatrix() {
+        return [
+            [  ]
+        ];
+    }
+
     static getPredictionsForDay(date) {
         // TODO: write real predictions getting instead of the stub
         let predictions = [];
