@@ -50,12 +50,12 @@ export class SliderView extends Component {
     let currentYear = currentDate.getFullYear();
     let currentMonth = currentDate.getMonth();
     let currentDay = currentDate.getDate();
-
     this._currentDate = new Date(currentYear, currentMonth, currentDay + 1);
+
+    let newDate = new Date(currentYear, currentMonth, currentDay + this.HALF_DISPLAYED_COLUMNS_COUNT + 2);
 
     setTimeout(() => {
 
-      let newDate = new Date(currentYear, currentMonth, currentDay + this.HALF_DISPLAYED_COLUMNS_COUNT + 2);
       this.calendar.moveRight(newDate, this._getPredictionForDay(newDate));
       content.style.transition = "";
       content.style.marginLeft = "0px";

@@ -58,13 +58,13 @@ export class Calendar extends Component {
     }
   }
 
-  moveRight(date, predictions) {
-    let firstColumn = this._el.querySelector('.js-column');
+  moveRight(date, predictions) {   
     let firstColumnObject = this._columnObjects.shift();
     firstColumnObject.date.render(date);
     firstColumnObject.predictions.forEach((prediction, i) => prediction.render({ prediction: predictions[i] }));
-    firstColumn.parentNode.appendChild(firstColumn);
     this._columnObjects.push(firstColumnObject);
+    let firstColumn = this._el.querySelector('.js-column');
+    firstColumn.parentNode.appendChild(firstColumn);
   }
 
   getMoveWidth() {
