@@ -3,16 +3,16 @@ import template from './slider-view.pug';
 import _ from './slider-view.scss';
 import { Calendar } from '../calendar/calendar';
 import { YearSignList } from '../year-sign-list/year-sign-list';
+import { MagicCalendarLogic } from '../../magicCalendarLogic';
+
+const TOTAL_COLUMNS = 14;
+const HALF_DISPLAYED_COLUMNS_COUNT = 6;
 
 export class SliderView extends Component {
 
   constructor(data) {
     super(data);
 
-    this.TOTAL_SIGNS = 12;
-    this.TOTAL_COLUMNS = 14;
-    this.TOTAL_PREDICTIONS = 9;
-    this.HALF_DISPLAYED_COLUMNS_COUNT = 6;
     this._currentDate = new Date();
   }
 
@@ -20,12 +20,12 @@ export class SliderView extends Component {
 
     this._el.innerHTML = template();
 
-    let prediction = this._getPredictions();
+    let prediction = SliderView._getPredictions(this._currentDate);
     this.calendar = new Calendar({
       el: this._el.querySelector(".js-calendar"),
       options: {
         width: prediction.columns.length,
-        height: this.TOTAL_SIGNS,
+        height: MagicCalendarLogic.TOTAL_SIGNS,
         content: prediction
       } 
     });
@@ -35,6 +35,7 @@ export class SliderView extends Component {
     });
 
     this.calendar.render();
+    this._moveWidth = this.calendar.getMoveWidth();
     yearSignList.render();
   }
 
@@ -44,7 +45,7 @@ export class SliderView extends Component {
     const timeout = 250;
 
     content.style.transition = `margin-left ${timeout}ms`;
-    content.style.marginLeft = "-" +  this.calendar.getMoveWidth();
+    content.style.marginLeft = "-" +  this._moveWidth;
     
     let currentDate = this._currentDate;
     let currentYear = currentDate.getFullYear();
@@ -52,23 +53,22 @@ export class SliderView extends Component {
     let currentDay = currentDate.getDate();
     this._currentDate = new Date(currentYear, currentMonth, currentDay + 1);
 
-    let newDate = new Date(currentYear, currentMonth, currentDay + this.HALF_DISPLAYED_COLUMNS_COUNT + 2);
+    let newDate = new Date(currentYear, currentMonth, currentDay + HALF_DISPLAYED_COLUMNS_COUNT + 2);
 
     setTimeout(() => {
 
-      this.calendar.moveRight(newDate, this._getPredictionForDay(newDate));
+      this.calendar.moveRight(newDate, MagicCalendarLogic.getPredictionsForDay(newDate));
       content.style.transition = "";
       content.style.marginLeft = "0px";
 
     }, timeout);
   }
 
-  _getPredictions() {
+  static _getPredictions(currentDate) {
 
-    let dateNow = this._currentDate;
-    let yearNow = dateNow.getFullYear();
-    let monthNow = dateNow.getMonth();
-    let dayNow = dateNow.getDate();
+    let yearNow = currentDate.getFullYear();
+    let monthNow = currentDate.getMonth();
+    let dayNow = currentDate.getDate();
 
     let result = {
       columns: [],
@@ -76,23 +76,13 @@ export class SliderView extends Component {
       dates: []
     };
 
-    for (let i = 0; i < this.TOTAL_COLUMNS; i++)
+    for (let i = 0; i < TOTAL_COLUMNS; i++)
     {
-      let date = new Date(yearNow, monthNow, dayNow - this.HALF_DISPLAYED_COLUMNS_COUNT + i);
-      result.columns.push(this._getPredictionForDay(date));
+      let date = new Date(yearNow, monthNow, dayNow - HALF_DISPLAYED_COLUMNS_COUNT + i);
+      result.columns.push(MagicCalendarLogic.getPredictionsForDay(date));
       result.dates.push(date);
     }
 
     return result;
-  }
-
-  _getPredictionForDay(date) {
-
-    let predictions = [];
-    for (let i = 0; i < this.TOTAL_SIGNS; i++)
-    {
-      predictions.push((date.getDate() + i) % this.TOTAL_PREDICTIONS + 1);
-    }
-    return predictions;
   }
 }

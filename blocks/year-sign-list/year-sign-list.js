@@ -1,6 +1,7 @@
 import { Component } from '../component';
 import template from './year-sign-list.pug';
 import _ from './year-sign-list.scss';
+import { MagicCalendarLogic } from '../../magicCalendarLogic';
 
 export class YearSignList extends Component {
 
@@ -10,24 +11,6 @@ export class YearSignList extends Component {
 
   render() {
 
-    this._el.innerHTML = template({ names: YearSignList._getNamesList() });
-  }
-
-  static _getNamesList() {
-
-    return [
-      "Крыса",
-      "Бык",
-      "Тигр",
-      "Кот",
-      "Дракон",
-      "Змея",
-      "Лошадь",
-      "Коза",
-      "Обезьяна",
-      "Петух",
-      "Собака",
-      "Кабан"
-    ]
+    this._el.innerHTML = template({ names: MagicCalendarLogic.getYearNames() });
   }
 }
