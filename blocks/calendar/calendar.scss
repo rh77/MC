@@ -30,6 +30,12 @@ $date-height: 40px;
     padding: $sign-padding;
   }
 
+  &__sign-container:hover {
+    width: $sign-size + $sign-padding * 2;
+    height: $sign-size + $sign-padding * 2;
+    padding: 0px;
+  }
+
   &__date-container {
     display: block;
     height: $date-height;
