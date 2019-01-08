@@ -1,9 +1,9 @@
 div.calendar__date-cell
     if day
         p
-            | #{day}
-            br 
-            | #{shortMonth}
+            | #{day}.#{month}
+            br
+            | #{shortSign}
     else if year
         p
             | #{year}

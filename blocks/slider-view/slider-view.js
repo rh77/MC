@@ -54,10 +54,11 @@ export class SliderView extends Component {
     this._currentDate = new Date(currentYear, currentMonth, currentDay + 1);
 
     let newDate = new Date(currentYear, currentMonth, currentDay + HALF_DISPLAYED_COLUMNS_COUNT + 2);
+    let signOfNewDate = MagicCalendarLogic.getSignOfDay(newDate);
 
     setTimeout(() => {
 
-      this.calendar.moveRight(newDate, MagicCalendarLogic.getPredictionsForDay(newDate));
+      this.calendar.moveRight(newDate, MagicCalendarLogic.getPredictionsForDay(signOfNewDate));
       content.style.transition = "";
       content.style.marginLeft = "0px";
 
@@ -79,7 +80,8 @@ export class SliderView extends Component {
     for (let i = 0; i < TOTAL_COLUMNS; i++)
     {
       let date = new Date(yearNow, monthNow, dayNow - HALF_DISPLAYED_COLUMNS_COUNT + i);
-      result.columns.push(MagicCalendarLogic.getPredictionsForDay(date));
+      let signOfDay = MagicCalendarLogic.getSignOfDay(date);
+      result.columns.push(MagicCalendarLogic.getPredictionsForDay(signOfDay));
       result.dates.push(date);
     }
 

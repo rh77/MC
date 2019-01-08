@@ -15,9 +15,11 @@ export class CalendarDateCell extends Component {
 
     switch (this._options.type.toLowerCase()) {
         case "day":
+            let signOfDay = MagicCalendarLogic.getSignOfDay(date);
             dateOptions = {
                 day: date.getDate(),
-                shortMonth: MagicCalendarLogic.getMonthShortName(date.getMonth() + 1)
+                month: (date.getMonth() + 1).toString().padStart(2, '0'),
+                shortSign: MagicCalendarLogic.getShortSignName(signOfDay)
             };
             break;
         case "year":
