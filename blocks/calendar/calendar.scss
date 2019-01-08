@@ -41,5 +41,7 @@ $date-height: 40px;
     height: $date-height;
     width: $sign-size;
     padding: $sign-padding;
+    padding-top: $sign-padding * 2;
+    padding-bottom: 0px;
   }
 }
