@@ -62,17 +62,18 @@ const TOTAL_PREDICTIONS = 9;
 
 export class MagicCalendarLogic {
 
-    static get TOTAL_SIGNS() { return TOTAL_SIGNS };
-    static get TOTAL_PREDICTIONS() { return TOTAL_PREDICTIONS };
+    static get TOTAL_SIGNS() { return TOTAL_SIGNS; };
+    static get TOTAL_PREDICTIONS() { return TOTAL_PREDICTIONS; };
+    static get fullSignNames() { return fullSignNames; }
 
-    static getPredictionsForDay(signOfDay) {
+    static getPredictions(sign) {
 
         let predictions = [];
-
         for (let i = 1; i <= TOTAL_SIGNS; i++)
         {
-            predictions.push(MagicCalendarCache.instance.getMagicEffect(i, signOfDay));
+            predictions.push(MagicCalendarCache.instance.getMagicEffect(i, sign));
         }
+
         return predictions;
     }
 
@@ -80,13 +81,10 @@ export class MagicCalendarLogic {
         // todo
     }
 
-    static getPredictionsForYear(year) {
-        // todo
-    }
-
-    static getYearShortName(year) {
-        // TODO: implement getting year sign
-        return "КБ";
+    static getYearShortName(date) {
+        
+        let sign = MagicCalendarLogic.getSignOfYear(date);
+        return shortSignNames[sign - 1];
     }
 
     static getShortSignName(sign) {
@@ -101,10 +99,6 @@ export class MagicCalendarLogic {
         return shortWeekDayNames[day];
     }
 
-    static get fullSignNames() {
-        return fullSignNames;
-    }
-
     static getSignOfDay(date) {
 
         let daysPast = (new Date(date.getFullYear(), date.getMonth(), date.getDate()) - krDay) / 1000 / 60 / 60 / 24;
@@ -115,6 +109,18 @@ export class MagicCalendarLogic {
         }
 
         return everyDayCicle[offsetSign];
+    }
+
+    static getSignOfYear(date) {
+
+        let yearsPast = date.getFullYear() - krYear;
+        let offsetSign = yearsPast % TOTAL_SIGNS;
+        if (offsetSign < 0)
+        {
+            offsetSign += TOTAL_SIGNS;
+        }
+
+        return yearCicle[offsetSign];
     }
 
     static _getMagicEffect(affectedSign, affectingSign) {

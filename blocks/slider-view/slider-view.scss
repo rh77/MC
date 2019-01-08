@@ -11,7 +11,7 @@ $background-color: white;
 
 .slider-view {
   display: block;
-  position: fixed;
+  position: relative;
   background-color: $background-color;
 
   &__left-panel {

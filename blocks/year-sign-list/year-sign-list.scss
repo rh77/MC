@@ -21,10 +21,14 @@ $cell-padding: 3px;
   &__sign-name {
     text-align: right;
     vertical-align: middle;
-    font-weight: bold;
     height: $sign-size - $cell-padding - 2px;
     padding: $cell-padding;
     padding-top: $cell-padding * 2 + 2px;
     padding-right: $cell-padding * 5;
+
+    &:hover,
+    &_selected { 
+      font-weight: bold;
+    }
   }
 }

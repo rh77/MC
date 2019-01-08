@@ -27,7 +27,7 @@ export class CalendarDateCell extends Component {
         default:
             dateOptions = {
                 year: date.getFullYear(),
-                yearShortSignName: MagicCalendarLogic.getYearShortName(dateOptions.year)
+                yearShortSignName: MagicCalendarLogic.getYearShortName(date)
             };
             break;
     }

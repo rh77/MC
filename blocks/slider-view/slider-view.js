@@ -3,7 +3,7 @@ import template from './slider-view.pug';
 import _ from './slider-view.scss';
 import { Calendar } from '../calendar/calendar';
 import { YearSignList } from '../year-sign-list/year-sign-list';
-import { MagicCalendarLogic } from '../../magicCalendarLogic';
+import { SliderViewDayStrategy } from './slider-view-day-strategy';
 
 const TOTAL_COLUMNS = 14;
 const HALF_DISPLAYED_COLUMNS_COUNT = 6;
@@ -14,18 +14,22 @@ export class SliderView extends Component {
     super(data);
 
     this._currentDate = new Date();
+    this._strategy = data.strategy || new SliderViewDayStrategy(); 
   }
 
   render() {
 
     this._el.innerHTML = template();
 
-    let prediction = SliderView._getPredictions(this._currentDate);
+    let date = this._currentDate;
+    let strategy = this._strategy;
+
+    let prediction = this._getPredictions(strategy.getNextDate(date, -HALF_DISPLAYED_COLUMNS_COUNT));
     this.calendar = new Calendar({
       el: this._el.querySelector(".js-calendar"),
       options: {
         width: prediction.columns.length,
-        height: MagicCalendarLogic.TOTAL_SIGNS,
+        height: prediction.columns[0].length,
         content: prediction
       } 
     });
@@ -47,42 +51,37 @@ export class SliderView extends Component {
     content.style.transition = `margin-left ${timeout}ms`;
     content.style.marginLeft = "-" +  this._moveWidth;
     
-    let currentDate = this._currentDate;
-    let currentYear = currentDate.getFullYear();
-    let currentMonth = currentDate.getMonth();
-    let currentDay = currentDate.getDate();
-    this._currentDate = new Date(currentYear, currentMonth, currentDay + 1);
+    let date = this._currentDate;
+    let strategy = this._strategy;
 
-    let newDate = new Date(currentYear, currentMonth, currentDay + HALF_DISPLAYED_COLUMNS_COUNT + 2);
-    let signOfNewDate = MagicCalendarLogic.getSignOfDay(newDate);
+    this._currentDate = strategy.getNextDate(date);
+    let newDate = strategy.getNextDate(date, HALF_DISPLAYED_COLUMNS_COUNT + 2);
+    let signOfNewDate = strategy.getSign(newDate);
 
     setTimeout(() => {
 
-      this.calendar.moveRight(newDate, MagicCalendarLogic.getPredictionsForDay(signOfNewDate));
+      this.calendar.moveRight(newDate, strategy.getPredictions(signOfNewDate));
       content.style.transition = "";
       content.style.marginLeft = "0px";
 
     }, timeout);
   }
 
-  static _getPredictions(currentDate) {
+  _getPredictions(date) {
 
-    let yearNow = currentDate.getFullYear();
-    let monthNow = currentDate.getMonth();
-    let dayNow = currentDate.getDate();
-
+    let strategy = this._strategy;
     let result = {
       columns: [],
-      type: "day",
+      type: strategy.displayType,
       dates: []
     };
 
     for (let i = 0; i < TOTAL_COLUMNS; i++)
     {
-      let date = new Date(yearNow, monthNow, dayNow - HALF_DISPLAYED_COLUMNS_COUNT + i);
-      let signOfDay = MagicCalendarLogic.getSignOfDay(date);
-      result.columns.push(MagicCalendarLogic.getPredictionsForDay(signOfDay));
+      let signOfDay = strategy.getSign(date);
+      result.columns.push(strategy.getPredictions(signOfDay));
       result.dates.push(date);
+      date = strategy.getNextDate(date);
     }
 
     return result;
