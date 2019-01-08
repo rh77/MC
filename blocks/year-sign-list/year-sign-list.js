@@ -8,8 +8,13 @@ export class YearSignList extends Component {
   constructor(data) {
     super(data);
 
-    this._el.addEventListener('click', () => {
-      this.onSignClick(3);
+    this._el.addEventListener('click', e => {
+
+      let signElement = e.target && e.target.closest('[data-id]');
+      if (signElement)
+      {
+        this.onSignClick(+signElement.dataset.id + 1);
+      }
     })
   }
 

@@ -1,3 +1,3 @@
 ul.year-sign-list
-    each name in names
-        li.year-sign-list__sign-name #{name}
+    each name, index in names
+        li.year-sign-list__sign-name(data-id=index) #{name}
