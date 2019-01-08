@@ -7,10 +7,16 @@ export class YearSignList extends Component {
 
   constructor(data) {
     super(data);
+
+    this._el.addEventListener('click', () => {
+      this.onSignClick(3);
+    })
   }
 
   render() {
 
     this._el.innerHTML = template({ names: MagicCalendarLogic.fullSignNames });
   }
+
+  onSignClick(sign) {}
 }

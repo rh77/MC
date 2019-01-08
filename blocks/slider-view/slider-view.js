@@ -38,9 +38,27 @@ export class SliderView extends Component {
       el: this._el.querySelector(".js-sign-names")
     });
 
+    yearSignList.onSignClick = sign => this.moveOverlap(sign);
+
     this.calendar.render();
-    this._moveWidth = this.calendar.getMoveWidth();
     yearSignList.render();
+
+    this.moveOverlap(6);
+  }
+
+  moveOverlap(sign) {
+
+    let overlapBottomLeft = this._el.querySelector(".js-overlap-bottom-left");
+    let overlapBottomRight = this._el.querySelector(".js-overlap-bottom-right");
+    let overlapTopLeft = this._el.querySelector(".js-overlap-top-left");
+    let overlapTopRight = this._el.querySelector(".js-overlap-top-right");
+
+    this._calendarMetrics = this._calendarMetrics || this.calendar.predictionsMetrics;
+    this._overlapOffset = this._overlapOffset || parseInt(getComputedStyle(overlapTopLeft).height);
+    let bottomOverlapHeight = this._calendarMetrics.predictionHeight * (this._strategy.totalSigns - sign) + "px";
+    let topOverlapHeight = this._overlapOffset + this._calendarMetrics.predictionHeight * (sign - 1) + "px";
+    overlapTopLeft.style.height = overlapTopRight.style.height = topOverlapHeight;
+    overlapBottomLeft.style.height = overlapBottomRight.style.height = bottomOverlapHeight;
   }
 
   moveRight() {
@@ -48,8 +66,9 @@ export class SliderView extends Component {
     let content = this._el.querySelector(".js-calendar");
     const timeout = 250;
 
+    this._calendarMetrics = this._calendarMetrics || this.calendar.predictionsMetrics;
     content.style.transition = `margin-left ${timeout}ms`;
-    content.style.marginLeft = "-" +  this._moveWidth;
+    content.style.marginLeft = "-" + this._calendarMetrics.predictionWidth + "px";
     
     let date = this._currentDate;
     let strategy = this._strategy;

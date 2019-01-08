@@ -50,25 +50,25 @@ $background-color: white;
       &_top-left {
         top: 0px;
         left: 0px;
-        height: ($sign-size + $cell-padding * 2) * 4 + $header-offset;
+        height: $header-offset;
       }
 
       &_top-right {
         top: 0px;
         right: 0px;
-        height: ($sign-size + $cell-padding * 2) * 4 + $header-offset;
+        height: $header-offset;
       }
 
       &_bottom-left {
         bottom: 0px;
         left: 0px;
-        height: ($sign-size + $cell-padding * 2) * 7;
+        height: ($sign-size + $cell-padding * 2) * 12;
       }
 
       &_bottom-right {
         bottom: 0px;
         right: 0px;
-        height: ($sign-size + $cell-padding * 2) * 7;
+        height: ($sign-size + $cell-padding * 2) * 12;
       }
     }
   }

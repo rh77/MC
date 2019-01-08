@@ -10,6 +10,15 @@ export class Calendar extends Component {
     super(data);
   }
 
+  get predictionsMetrics() {
+
+    let metrics = {};
+    let predictionRectangle = this._el.querySelector('.js-prediction-cell').getBoundingClientRect();
+    metrics.predictionWidth = predictionRectangle.width;
+    metrics.predictionHeight = predictionRectangle.height;
+    return metrics;
+  }
+
   render() {
 
     let options = {
@@ -65,10 +74,5 @@ export class Calendar extends Component {
     this._columnObjects.push(firstColumnObject);
     let firstColumn = this._el.querySelector('.js-column');
     firstColumn.parentNode.appendChild(firstColumn);
-  }
-
-  getMoveWidth() {
-    let firstColumn = this._el.querySelector('.js-column');
-    return getComputedStyle(firstColumn).width;
   }
 }
