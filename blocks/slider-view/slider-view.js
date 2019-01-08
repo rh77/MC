@@ -43,6 +43,7 @@ export class SliderView extends Component {
     this.calendar.render();
     yearSignList.render();
 
+    yearSignList.select(6);
     this.moveOverlap(6);
   }
 
