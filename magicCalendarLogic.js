@@ -1,3 +1,5 @@
+import { MagicCalendarCache } from "./magicCalendarCache";
+
 const kr = 1;
 const bk = 2;
 const tg = 3;
@@ -12,6 +14,9 @@ const sb = 11;
 const kb = 12;
 
 const shortSignNames = [ "КР", "БК", "ТГ", "КТ", "ДР", "ЗМ", "ЛШ", "КЗ", "ОБ", "ПТ", "СБ", "КБ" ];
+const fullSignNames = [ "Крыса", "Бык", "Тигр", "Кот", "Дракон", "Змея", "Лошадь", "Коза", "Обезьяна", "Петух", "Собака", "Кабан" ];
+const shortMonthNames = [ "янв", "фев", "мар", "апр", "май", "июн", "июл", "авг", "сен", "окт", "ноя", "дек" ];
+const shortWeekDayNames = [ "вс", "пн", "вт", "ср", "чт", "пт", "сб" ];
 
 const hard = 1;
 const shadow = 2;
@@ -47,30 +52,36 @@ const businessPyramid = {
 };
 
 const krDay = new Date(2019, 0, 1);
+const krYear = 2020;
 
 const everyDayCicle = [ kr, kb, sb, pt, ob, kz, ls, zm, dr, kt, tg, bk ];
+const yearCicle = [ kr, bk, tg, kt, dr, zm, ls, kz, ob, pt, sb, kb ];
+
+const TOTAL_SIGNS = 12;
+const TOTAL_PREDICTIONS = 9;
 
 export class MagicCalendarLogic {
 
-    static get TOTAL_SIGNS() { return 12 };
-    static get TOTAL_PREDICTIONS() { return 9 };
+    static get TOTAL_SIGNS() { return TOTAL_SIGNS };
+    static get TOTAL_PREDICTIONS() { return TOTAL_PREDICTIONS };
 
     static getPredictionsForDay(signOfDay) {
 
         let predictions = [];
-        for (let i = 1; i <= MagicCalendarLogic.TOTAL_SIGNS; i++)
+
+        for (let i = 1; i <= TOTAL_SIGNS; i++)
         {
-            predictions.push(MagicCalendarLogic._getMagicEffect(i, signOfDay));
+            predictions.push(MagicCalendarCache.instance.getMagicEffect(i, signOfDay));
         }
         return predictions;
     }
 
     static getPredictionsForMonth(month) {
-
+        // todo
     }
 
     static getPredictionsForYear(year) {
-
+        // todo
     }
 
     static getYearShortName(year) {
@@ -83,44 +94,26 @@ export class MagicCalendarLogic {
     }
 
     static getMonthShortName(month) {
-        switch (month) {
-            case 1 : return "янв";
-            case 2 : return "фев";
-            case 3 : return "мар";
-            case 4 : return "апр";
-            case 5 : return "май";
-            case 6 : return "июн";
-            case 7 : return "июл";
-            case 8 : return "авг";
-            case 9 : return "сен";
-            case 10 : return "окт";
-            case 11 : return "ноя";
-            case 12 : return "дек";
-            default: return "";
-        }
+        return shortMonthNames[month];
     }
 
-    static getYearNames() {
-        return [
-            "Крыса",
-            "Бык",
-            "Тигр",
-            "Кот",
-            "Дракон",
-            "Змея",
-            "Лошадь",
-            "Коза",
-            "Обезьяна",
-            "Петух",
-            "Собака",
-            "Кабан"
-        ];
+    static getWeekDayShortName(day) {
+        return shortWeekDayNames[day];
+    }
+
+    static get fullSignNames() {
+        return fullSignNames;
     }
 
     static getSignOfDay(date) {
 
         let daysPast = (new Date(date.getFullYear(), date.getMonth(), date.getDate()) - krDay) / 1000 / 60 / 60 / 24;
-        let offsetSign = daysPast % MagicCalendarLogic.TOTAL_SIGNS;
+        let offsetSign = daysPast % TOTAL_SIGNS;
+        if (offsetSign < 0)
+        {
+            offsetSign += TOTAL_SIGNS;
+        }
+
         return everyDayCicle[offsetSign];
     }
 

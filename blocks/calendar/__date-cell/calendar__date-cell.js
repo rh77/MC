@@ -18,6 +18,7 @@ export class CalendarDateCell extends Component {
             let signOfDay = MagicCalendarLogic.getSignOfDay(date);
             dateOptions = {
                 day: date.getDate(),
+                dayOfWeek: MagicCalendarLogic.getWeekDayShortName(date.getDay()),
                 month: (date.getMonth() + 1).toString().padStart(2, '0'),
                 shortSign: MagicCalendarLogic.getShortSignName(signOfDay)
             };

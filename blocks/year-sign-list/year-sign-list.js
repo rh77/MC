@@ -11,6 +11,6 @@ export class YearSignList extends Component {
 
   render() {
 
-    this._el.innerHTML = template({ names: MagicCalendarLogic.getYearNames() });
+    this._el.innerHTML = template({ names: MagicCalendarLogic.fullSignNames });
   }
 }

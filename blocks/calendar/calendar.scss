@@ -1,6 +1,6 @@
 $sign-size: 32px;
 $sign-padding: 3px;
-$date-height: 40px;
+$date-height: 46px;
 
 .calendar {
   display: block;
@@ -41,7 +41,6 @@ $date-height: 40px;
     height: $date-height;
     width: $sign-size;
     padding: $sign-padding;
-    padding-top: $sign-padding * 2;
-    padding-bottom: 0px;
+    font-size: 0.8rem;
   }
 }
