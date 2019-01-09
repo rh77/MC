@@ -15,12 +15,7 @@ export class YearSignList extends Component {
       let clickedSign = e.target && e.target.closest('[data-id]');
       if (clickedSign)
       {
-        let selectedElement = this._el.querySelector("." + modifierSelected);
-        if (selectedElement)
-        {
-          selectedElement.classList.remove(modifierSelected);
-        }
-
+        this._unselectAll();
         clickedSign.classList.add(modifierSelected);
         this.onSignClick(+clickedSign.dataset.id + 1);
       }
@@ -34,8 +29,19 @@ export class YearSignList extends Component {
 
   select(sign) {
 
+    this._unselectAll();
     let selectingElement = this._el.querySelector(`[data-id="${sign - 1}"]`);
     selectingElement.classList.add(modifierSelected);
+    this.onSignClick(sign);
+  }
+
+  _unselectAll() {
+
+    let selectedElement = this._el.querySelector("." + modifierSelected);
+    if (selectedElement)
+    {
+      selectedElement.classList.remove(modifierSelected);
+    }
   }
 
   onSignClick(sign) {}

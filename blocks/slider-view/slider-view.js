@@ -44,7 +44,6 @@ export class SliderView extends Component {
     yearSignList.render();
 
     yearSignList.select(6);
-    this.moveOverlap(6);
   }
 
   moveOverlap(sign) {
