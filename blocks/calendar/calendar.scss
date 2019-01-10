@@ -28,6 +28,8 @@ $date-height: 46px;
     width: $sign-size;
     height: $sign-size;
     padding: $sign-padding;
+    transition: padding .2s ease;
+    cursor: pointer;
   }
 
   &__sign-container:hover {

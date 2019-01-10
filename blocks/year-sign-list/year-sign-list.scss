@@ -25,6 +25,7 @@ $cell-padding: 3px;
     padding: $cell-padding;
     padding-top: $cell-padding * 2 + 2px;
     padding-right: $cell-padding * 5;
+    cursor: pointer;
 
     &:hover,
     &.selected { 
