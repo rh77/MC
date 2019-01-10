@@ -27,7 +27,7 @@ $cell-padding: 3px;
     padding-right: $cell-padding * 5;
 
     &:hover,
-    &_selected { 
+    &.selected { 
       font-weight: bold;
     }
   }

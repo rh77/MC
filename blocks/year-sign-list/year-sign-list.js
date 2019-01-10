@@ -3,7 +3,7 @@ import template from './year-sign-list.pug';
 import _ from './year-sign-list.scss';
 import { MagicCalendarLogic } from '../../magicCalendarLogic';
 
-const modifierSelected = "year-sign-list__sign-name_selected";
+const modifierSelected = "selected";
 
 export class YearSignList extends Component {
 
