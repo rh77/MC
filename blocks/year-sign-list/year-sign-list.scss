@@ -1,8 +1,12 @@
 $sign-size: 32px;
 $cell-padding: 3px;
+$sign-names-width: 100px;
 
 .year-sign-list {
-  display: block;
+  display: table;
+  position: relative;
+  top: 0px;
+  left: 0px;
 
   &,
   & * {
@@ -19,12 +23,9 @@ $cell-padding: 3px;
   }
 
   &__sign-name {
-    text-align: right;
-    vertical-align: middle;
-    height: $sign-size - $cell-padding - 2px;
+    position: relative;
+    height: $sign-size;
     padding: $cell-padding;
-    padding-top: $cell-padding * 2 + 2px;
-    padding-right: $cell-padding * 5;
     cursor: pointer;
 
     &:hover,
@@ -32,4 +33,14 @@ $cell-padding: 3px;
       font-weight: bold;
     }
   }
+}
+
+.sign-text {
+  display: table-cell;
+  vertical-align: middle;
+  height: $sign-size;
+  width: $sign-names-width;
+  text-align: right;
+  padding-right: 10%;
+  font-size: 1.1rem;
 }

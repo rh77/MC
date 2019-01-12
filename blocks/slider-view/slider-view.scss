@@ -16,9 +16,10 @@ $background-color: white;
 
   &__left-panel {
     padding-top: $header-offset;
+    position: relative;
     float: left;
     width: $sign-names-width;
-    height: $content-height + $header-offset;
+    height: $content-height;
   }
 
   &__center-frame {
@@ -34,6 +35,7 @@ $background-color: white;
   }
 
   &__right-panel {
+    position: relative;
     float: left;
     width: $right-panel-width;
     height: $content-height + $header-offset;
